@@ -3,12 +3,10 @@ package com.headcovers.pages.admin;
 import com.headcovers.pages.WarpPage;
 import org.openqa.selenium.WebDriver;
 
-public class AdminLoginPage extends WarpAdminPage {
+public class WarpAdminPage extends WarpPage {
 
-    AdminLoginPage(WebDriver driver){
+    public WarpAdminPage(WebDriver driver){
         super(driver);
     }
-
-
 
 }

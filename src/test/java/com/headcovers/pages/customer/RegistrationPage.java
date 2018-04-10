@@ -1,4 +1,4 @@
-package com.headcovers.pages.user;
+package com.headcovers.pages.customer;
 
 import com.headcovers.pages.WarpMainPage;
 import org.openqa.selenium.By;

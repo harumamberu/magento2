@@ -2,10 +2,10 @@ package com.headcovers.pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class WarpAdminPage extends WarpPage {
-
-    public WarpAdminPage(WebDriver driver){
+public class SearchPage extends WarpMainPage{
+    SearchPage(WebDriver driver){
         super(driver);
     }
+
 
 }
