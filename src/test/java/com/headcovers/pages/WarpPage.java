@@ -20,9 +20,9 @@ public class WarpPage{
     }
 
     public void click(By by){
-        driver.findElement(by).isDisplayed();
         visibilityOf(by);
         clickableOf(by);
+        driver.findElement(by).isDisplayed();
         try {
             driver.findElement(by).click();
         }catch (WebDriverException e){

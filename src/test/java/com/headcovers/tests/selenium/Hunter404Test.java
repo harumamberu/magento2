@@ -7,7 +7,11 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static com.headcovers.pages.WarpMainPage.navBarCategoryDROPDOWNMENU;
+
 public class Hunter404Test extends BaseTest{
+    int n;
+    private By categoryStaticXpath = By.xpath("//*[@id=\"menu-5acd9dcf73fb9\"]/ul/li[" + n + "]/a");
 
     @Test
     public void hunter404Test(){
@@ -22,7 +26,7 @@ public class Hunter404Test extends BaseTest{
                 //for each subcategory in one navbar menu
                 List<WebElement> subCategories = driver.findElements(By.xpath("sub categories xpath"));
                 for (subCategory = 0; subCategory <= subCategories.size() || subCategories.listIterator().hasNext(); subCategory++){
-                    if(!navBarCategories.get(navBarCategoryDROPDOWNMENU).isDisplayed()){
+                    if(!driver.findElement(navBarCategoryDROPDOWNMENU).isDisplayed()){
                         navBarCategories.get(navBarCategory).click();
                     }
                     subCategories.get(subCategory).click();
@@ -45,4 +49,7 @@ public class Hunter404Test extends BaseTest{
 
         }while (true);
     }
+
+
+
 }

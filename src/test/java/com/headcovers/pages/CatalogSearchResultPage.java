@@ -2,8 +2,8 @@ package com.headcovers.pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class SearchPage extends WarpMainPage{
-    SearchPage(WebDriver driver){
+public class CatalogSearchResultPage extends WarpMainPage{
+    CatalogSearchResultPage(WebDriver driver){
         super(driver);
     }
 

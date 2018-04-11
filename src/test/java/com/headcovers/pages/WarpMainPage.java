@@ -1,6 +1,8 @@
 package com.headcovers.pages;
 
 import com.headcovers.pages.customer.SignInPage;
+import com.headcovers.pages.customer.categories.CategoryWarpPage;
+import com.headcovers.pages.customer.product.ProductWarpPage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +17,14 @@ public class WarpMainPage extends WarpPage{
     public By linkSignOut = By.xpath("//*[@id='page-header']//a[contains(text(), 'Sign out')]");
     public By fieldSearch = By.id("search");
     public By buttonSearch = By.xpath("//*[@id='header-sticky-mobile']//button[@title='Search']");
+    public By smartSearchDrowndownResult = By.xpath("//*[@class='c-smartsearch__wrapper--inner']");
+    public By linkSmartSearchDrowndownFirst = By.xpath("//*[@class='c-smartsearch__wrapper--inner']/*/div[1]/a");
+    public By linkSmartSearchDrowndownSecond = By.xpath("//*[@class='c-smartsearch__wrapper--inner']/*/div[2]/a");
+    public By linkSmartSearchDrowndownThird = By.xpath("//*[@class='c-smartsearch__wrapper--inner']/*/div[3]/a");
+    public By linkSmartSearchDrowndownFours = By.xpath("//*[@class='c-smartsearch__wrapper--inner']/*/div[4]/a");
+    public By linkSmartSearchDrowndownLast = By.xpath("//*[@class='c-smartsearch__wrapper--inner']/*/div[5]/a");
     public By buttonMyBag = By.xpath("//a[contains(@href, '/checkout/cart')]");
+    public static By navBarCategoryDROPDOWNMENU = By.xpath("");
 
 
     public SignInPage navigatetoSignInPage(){
@@ -28,10 +37,56 @@ public class WarpMainPage extends WarpPage{
         return this;
     }
 
-    public SearchPage searchByText(String text){
+    public CatalogSearchResultPage searchByTextConfigurableProduct(String text){
         fillField(fieldSearch, text);
         click(buttonSearch);
-        return new SearchPage(driver);
+        return new CatalogSearchResultPage(driver);
+    }
+
+    public CategoryWarpPage searchByTextThatMatchesAsCategory(String text){
+        fillField(fieldSearch, text);
+        click(buttonSearch);
+        return new CategoryWarpPage(driver);
+    }
+
+    public ProductWarpPage searchProductThatMatchs100percent(String text){
+        fillField(fieldSearch, text);
+        click(buttonSearch);
+        return new ProductWarpPage(driver);
+    }
+
+    public WarpMainPage fillSearchField(String text){
+        fillField(fieldSearch, text);
+        click(fieldSearch);
+        return this;
+    }
+
+
+    public WarpMainPage fillSField(String string){
+        driver.findElement(fieldSearch).sendKeys(string);
+        click(fieldSearch);
+        return this;
+    }
+
+    public ProductWarpPage clickTheSmartsearchItem(int number){
+        switch(number){
+            case 1:
+                click(linkSmartSearchDrowndownFirst);
+                break;
+            case 2:
+                click(linkSmartSearchDrowndownSecond);
+                break;
+            case 3:
+                click(linkSmartSearchDrowndownThird);
+                break;
+            case 4:
+                click(linkSmartSearchDrowndownFours);
+                break;
+            case 5:
+                click(linkSmartSearchDrowndownLast);
+                break;
+        }
+        return new ProductWarpPage(driver);
     }
 
 }
