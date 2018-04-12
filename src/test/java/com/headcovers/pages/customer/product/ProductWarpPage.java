@@ -11,11 +11,12 @@ public class ProductWarpPage extends WarpMainPage{
     }
 
     protected By sku = By.xpath("//*[@itemprop='sku']");
-    protected By productName = By.xpath("//*[@itemprop='name']");
+    protected By productNameLocator = By.xpath("//*[@itemprop='name']");
     protected By price = By.xpath("//*[@class='price']");
 
-    public ProductWarpPage checkThatOpenedProductPageCorrespodToTheWordInSearch(String oneWord){
-        Assert.assertTrue(driver.findElement(productName).getText().equalsIgnoreCase(oneWord));
+    public ProductWarpPage checkThatOpenedProductPageCorrespodToTheWordInSearch(String oneWord, String secondChar, String thirdChar){
+        String productName = driver.findElement(productNameLocator).getText();
+        Assert.assertTrue(productName.contains(oneWord+secondChar+thirdChar));
         return this;
     }
 
@@ -24,7 +25,7 @@ public class ProductWarpPage extends WarpMainPage{
         return this;
     }
 
-    public ProductWarpPage checkThatOpenedProductPageCorrespodToTheWordInSearch(String firstWord, String secondWords, String thirdWords){
+    public ProductWarpPage checkThatOpenedProductPageCorrespodToTheWordInSearch(String firstWord){
 
         return this;
     }

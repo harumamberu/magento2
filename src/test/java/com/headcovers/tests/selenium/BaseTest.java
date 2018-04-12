@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -25,7 +26,9 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         this.driver = new ChromeDriver();
         mainPage = new WarpMainPage(driver);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         dateByPatterNyyMMddHHmmss = new SimpleDateFormat("yyMMddHHmmss").format(new Date());
+        driver.manage().window().maximize();
         driver.get(baseUrl);
 
         builder = new Actions(driver);
