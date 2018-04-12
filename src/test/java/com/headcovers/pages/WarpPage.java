@@ -45,6 +45,11 @@ public class WarpPage{
         waiter.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
     }
 
+    public void presenceOfElementInDOM(By by){
+        waiter = new WebDriverWait(driver, 5);
+        waiter.until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
     public void fillField(By by, String string){
         driver.findElement(by).clear();
         driver.findElement(by).sendKeys(string);

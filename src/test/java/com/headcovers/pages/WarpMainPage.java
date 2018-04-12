@@ -71,18 +71,23 @@ public class WarpMainPage extends WarpPage{
     public ProductWarpPage clickTheSmartsearchItem(int number){
         switch(number){
             case 1:
+                presenceOfElementInDOM(linkSmartSearchDrowndownFirst);
                 click(linkSmartSearchDrowndownFirst);
                 break;
             case 2:
+                presenceOfElementInDOM(linkSmartSearchDrowndownSecond);
                 click(linkSmartSearchDrowndownSecond);
                 break;
             case 3:
+                presenceOfElementInDOM(linkSmartSearchDrowndownThird);
                 click(linkSmartSearchDrowndownThird);
                 break;
             case 4:
+                presenceOfElementInDOM(linkSmartSearchDrowndownFours);
                 click(linkSmartSearchDrowndownFours);
                 break;
             case 5:
+                presenceOfElementInDOM(linkSmartSearchDrowndownLast);
                 click(linkSmartSearchDrowndownLast);
                 break;
         }
