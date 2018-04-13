@@ -20,8 +20,12 @@ public class SearchTest extends BaseTest{
     }
 
     @Test
-    public void SearchTheProductThatMatches100percent(){
-        mainPage.searchProductThatMatchs100percent("");
+    @FileParameters("src/test/resources/ProductsNameForTestSearchDropdown.csv")
+    public void SearchTheProductThatMatches100percent(String firstWord, String secondWord, String thirdWord){
+        mainPage.fillSearchField(firstWord + " " + secondWord + " " + thirdWord)
+                .clickButtonSearch()
+                .checkThatOpenedProductPageCorrespodToTheWordInSearch(firstWord)
+                .checkThatOpenedProductPageCorrespodToTheWordInSearch(secondWord);
     }
 
     @Test

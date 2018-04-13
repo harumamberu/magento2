@@ -61,6 +61,10 @@ public class WarpMainPage extends WarpPage{
         return this;
     }
 
+    public ProductWarpPage clickButtonSearch(){
+        click(buttonSearch);
+        return new ProductWarpPage(driver);
+    }
 
     public WarpMainPage fillSField(String string){
         driver.findElement(fieldSearch).sendKeys(string);
