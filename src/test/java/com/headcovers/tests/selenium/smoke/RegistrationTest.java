@@ -1,6 +1,7 @@
 package com.headcovers.tests.selenium.smoke;
 
 import com.headcovers.tests.selenium.BaseTest;
+import org.junit.After;
 import org.junit.Test;
 
 
@@ -14,4 +15,11 @@ public class RegistrationTest extends BaseTest {
                 .assertMyDashboardPresented();
     }
 
+    @After
+    public void delAllUsers(){
+        mainPage.openAdminLoginPage()
+                .loginAs()
+                .navigateToCustomersAllPage()
+                .deleteAllUsersByString("testfirstname");
+    }
 }

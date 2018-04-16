@@ -16,7 +16,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected WarpMainPage mainPage;
     public String dateByPatterNyyMMddHHmmss;
-    public String baseUrl = "http://stage-php70.headcovers.silksoftware.net";
+
     Actions builder;
 
 
@@ -25,11 +25,11 @@ public class BaseTest {
         System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe");
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         this.driver = new ChromeDriver();
-        mainPage = new WarpMainPage(driver);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         dateByPatterNyyMMddHHmmss = new SimpleDateFormat("yyMMddHHmmss").format(new Date());
         driver.manage().window().maximize();
-        driver.get(baseUrl);
+
+        mainPage = new WarpMainPage(driver).open();
 
         builder = new Actions(driver);
     }

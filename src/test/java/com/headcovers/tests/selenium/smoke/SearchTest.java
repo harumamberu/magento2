@@ -20,7 +20,7 @@ public class SearchTest extends BaseTest{
     }
 
     @Test
-    @FileParameters("src/test/resources/ProductsNameForTestSearchDropdown.csv")
+    @FileParameters("src/test/resources/FullProductsNames.csv")
     public void SearchTheProductThatMatches100percent(String firstWord, String secondWord, String thirdWord){
         mainPage.fillSearchField(firstWord + " " + secondWord + " " + thirdWord)
                 .clickButtonSearch()

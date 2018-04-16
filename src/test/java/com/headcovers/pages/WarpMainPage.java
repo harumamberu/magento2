@@ -1,5 +1,6 @@
 package com.headcovers.pages;
 
+import com.headcovers.pages.admin.AdminLoginPage;
 import com.headcovers.pages.customer.SignInPage;
 import com.headcovers.pages.customer.categories.CategoryWarpPage;
 import com.headcovers.pages.customer.product.ProductWarpPage;
@@ -98,4 +99,13 @@ public class WarpMainPage extends WarpPage{
         return new ProductWarpPage(driver);
     }
 
+    public WarpMainPage open() {
+        driver.get(baseUrl);
+        return this;
+    }
+
+    public AdminLoginPage openAdminLoginPage() {
+        driver.navigate().to(baseUrl+adminUrl);
+        return new AdminLoginPage(driver);
+    }
 }
