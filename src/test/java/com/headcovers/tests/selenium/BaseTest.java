@@ -34,6 +34,10 @@ public class BaseTest {
         builder = new Actions(driver);
     }
 
+    public String getdateByPatterNyyMMddHHmmss(){
+        return new SimpleDateFormat("yyMMddHHmmss").format(new Date());
+    }
+
     @After
     public void closeDriver(){
         driver.close();}

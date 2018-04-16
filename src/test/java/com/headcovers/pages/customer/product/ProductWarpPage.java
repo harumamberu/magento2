@@ -20,19 +20,11 @@ public class ProductWarpPage extends WarpMainPage{
     protected By productNameLocator = By.xpath("//*[@itemprop='name']");
     protected By price = By.xpath("//*[@class='price']");
 
-    //attributes, all colors in swatchers
+    //attributes, all colors in swatchers//protected List<By>
     protected By colorSwatcherBlock = By.id("color-swatch-attribute-92");
     @FindAll({
             @FindBy(how = How.XPATH, using = "//*[@id=\"color-swatch-attribute-92\"]/li")
-    })
-    private List<WebElement> colorsInSwatcher;
-    //protected List<By>
-
-    public ProductWarpPage checkThatOpenedProductPageCorrespodToTheWordInSearch(String oneWord, String secondChar, String thirdChar){
-        String productName = driver.findElement(productNameLocator).getText();
-        Assert.assertTrue(productName.contains(oneWord+secondChar+thirdChar));
-        return this;
-    }
+    })private List<WebElement> colorsInSwatcher;
 
     public ProductWarpPage chooseFirstColorBySwatcher(){
         colorsInSwatcher.get(1).click();
@@ -41,6 +33,13 @@ public class ProductWarpPage extends WarpMainPage{
 
     public ProductWarpPage chooseColordBySwatcher(String chooseByText){
         //implement choosing by text
+        return this;
+    }
+
+
+    public ProductWarpPage checkThatOpenedProductPageCorrespodToTheWordInSearch(String oneWord, String secondChar, String thirdChar){
+        String productName = driver.findElement(productNameLocator).getText();
+        Assert.assertTrue(productName.contains(oneWord+secondChar+thirdChar));
         return this;
     }
 

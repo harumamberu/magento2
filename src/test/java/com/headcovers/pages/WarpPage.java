@@ -33,7 +33,7 @@ public class WarpPage{
             driver.findElement(by).isDisplayed();
             driver.findElement(by).click();
         }catch (WebDriverException e){
-            e.getMessage();
+            e.printStackTrace();
             clickJS(by);
         }
     }

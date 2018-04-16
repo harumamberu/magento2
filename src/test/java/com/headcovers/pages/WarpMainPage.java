@@ -3,12 +3,13 @@ package com.headcovers.pages;
 import com.headcovers.pages.admin.AdminLoginPage;
 import com.headcovers.pages.customer.SignInPage;
 import com.headcovers.pages.customer.categories.CategoryWarpPage;
+import com.headcovers.pages.customer.interfaces.Minicart;
 import com.headcovers.pages.customer.product.ProductWarpPage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class WarpMainPage extends WarpPage{
+public class WarpMainPage extends WarpPage implements Minicart{
     public WarpMainPage(WebDriver driver){
         super(driver);
     }
@@ -67,7 +68,7 @@ public class WarpMainPage extends WarpPage{
         return new ProductWarpPage(driver);
     }
 
-    public WarpMainPage fillSField(String string){
+    public WarpMainPage fillSearchField1by1characters(String string){
         driver.findElement(fieldSearch).sendKeys(string);
         click(fieldSearch);
         return this;

@@ -4,8 +4,8 @@ import com.headcovers.tests.selenium.BaseTest;
 import org.junit.Test;
 
 public class BuyAsLoggedCustomerTest extends BaseTest{
-    @Test
-    public void buyAsLoggedCustomerTest(){
 
+    public void buyAsLoggedCustomerTest(){
+        mainPage.searchProductThatMatchs100percent("Three Seam Turban");
     }
 }

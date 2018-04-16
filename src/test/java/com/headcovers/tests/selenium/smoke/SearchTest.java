@@ -12,9 +12,9 @@ public class SearchTest extends BaseTest{
     @Test
     @FileParameters("src/test/resources/ProductsNameForTestSearchDropdown.csv")
     public void SearchTheProductThatMatchesInDrowdown(String prodName, String secondChar, String thirdChar){
-        mainPage.fillSField(prodName)
-                .fillSField(secondChar)
-                .fillSField(thirdChar)
+        mainPage.fillSearchField1by1characters(prodName)
+                .fillSearchField1by1characters(secondChar)
+                .fillSearchField1by1characters(thirdChar)
                 .clickTheSmartsearchItem(1)
                 .checkThatOpenedProductPageCorrespodToTheWordInSearch(prodName);
     }
@@ -28,14 +28,10 @@ public class SearchTest extends BaseTest{
                 .checkThatOpenedProductPageCorrespodToTheWordInSearch(secondWord);
     }
 
-    @Test
     public void SearchTheProductThatMatchesAsCatalog(){
-
     }
 
-    @Test
     public void SearchNegativeTest(){
-
         //min lenght 3
         //random chars
     }
