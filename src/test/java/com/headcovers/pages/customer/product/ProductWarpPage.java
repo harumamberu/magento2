@@ -5,9 +5,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -17,25 +16,34 @@ public class ProductWarpPage extends WarpMainPage{
     }
 
     protected By sku = By.xpath("//*[@itemprop='sku']");
-    protected By productNameLocator = By.xpath("//*[@itemprop='name']");
+    protected By productNameLocator = By.xpath("//h1/*[@itemprop='name']");
     protected By price = By.xpath("//*[@class='price']");
+    protected By popupHoveredSwatcher = By.xpath("//*[@id='floatBox_ajax']");
+    protected By colorNameOfLastHoveredSwatcher = By.xpath("//*[@id='floatBox_ajax']/h5");
+    protected By buttonAddToCart = By.id("product-addtocart-button");
+    protected By alertRequiredField = By.id("attribute92-error");
 
     //attributes, all colors in swatchers//protected List<By>
     protected By colorSwatcherBlock = By.id("color-swatch-attribute-92");
-    @FindAll({
-            @FindBy(how = How.XPATH, using = "//*[@id=\"color-swatch-attribute-92\"]/li")
-    })private List<WebElement> colorsInSwatcher;
+
+    private List<WebElement> colorsInSwatcher = driver.findElements(By.xpath("//*[@id='color-swatch-attribute-92']/li"));
+    private static final By firstSwatcher = By.xpath("//*[@id='color-swatch-attribute-92']//img");
+
+    public List<WebElement> getColorsInSwatcher(){
+        return colorsInSwatcher;
+    }
 
     public ProductWarpPage chooseFirstColorBySwatcher(){
-        colorsInSwatcher.get(1).click();
+        waiter = new WebDriverWait(driver, 10);
+        waiter.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id='product-options-wrapper']//select"))));
+        click(firstSwatcher);
         return this;
     }
 
-    public ProductWarpPage chooseColordBySwatcher(String chooseByText){
+    public ProductWarpPage chooseColorBySwatcher(String chooseByText){
         //implement choosing by text
         return this;
     }
-
 
     public ProductWarpPage checkThatOpenedProductPageCorrespodToTheWordInSearch(String oneWord, String secondChar, String thirdChar){
         String productName = driver.findElement(productNameLocator).getText();
@@ -49,8 +57,19 @@ public class ProductWarpPage extends WarpMainPage{
     }
 
     public ProductWarpPage checkThatOpenedProductPageCorrespodToTheWordInSearch(String firstWord){
-
+        String productName = driver.findElement(productNameLocator).getText().toLowerCase();
+        Assert.assertTrue(productName.contains(firstWord));
         return this;
     }
+
+    public ProductWarpPage clickAddToCartButton(){
+        click(buttonAddToCart);
+        if(isVisable(alertRequiredField)){
+            chooseFirstColorBySwatcher();
+            click(buttonAddToCart);
+        }
+        return new ProductWarpPage(driver);
+    }
+
 
 }

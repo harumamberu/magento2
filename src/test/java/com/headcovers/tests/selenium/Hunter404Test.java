@@ -11,6 +11,7 @@ import static com.headcovers.pages.WarpMainPage.navBarCategoryDROPDOWNMENU;
 
 public class Hunter404Test extends BaseTest{
     int n;
+    Object a;
     private By categoryStaticXpath = By.xpath("//*[@id=\"menu-5acd9dcf73fb9\"]/ul/li[" + n + "]/a");
 
     @Test

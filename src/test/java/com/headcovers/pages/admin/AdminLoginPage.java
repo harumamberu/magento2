@@ -20,7 +20,7 @@ public class AdminLoginPage extends WarpPage {
     }
 
     public WarpAdminPage loginAs(){
-        fillField(fieldUser, "admin");
+        fillField(fieldUser, "silk.andrii");
         fillField(fieldPass, "andrii12345");
         click(buttonLogin);
         return new WarpAdminPage(driver);

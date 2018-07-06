@@ -11,18 +11,16 @@ public class SearchTest extends BaseTest{
 
     @Test
     @FileParameters("src/test/resources/ProductsNameForTestSearchDropdown.csv")
-    public void SearchTheProductThatMatchesInDrowdown(String prodName, String secondChar, String thirdChar){
-        mainPage.fillSearchField1by1characters(prodName)
-                .fillSearchField1by1characters(secondChar)
-                .fillSearchField1by1characters(thirdChar)
+    public void SearchTheProductThatMatchesInDrowdown(String prodName){
+        mainPage.fillSearchField1ByCharacter(prodName)
                 .clickTheSmartsearchItem(1)
                 .checkThatOpenedProductPageCorrespodToTheWordInSearch(prodName);
     }
 
-    @Test
+    //check that opened product correspond to the words
     @FileParameters("src/test/resources/FullProductsNames.csv")
     public void SearchTheProductThatMatches100percent(String firstWord, String secondWord, String thirdWord){
-        mainPage.fillSearchField(firstWord + " " + secondWord + " " + thirdWord)
+        mainPage.fillSearchField1ByCharacter(firstWord + " " + secondWord + " " + thirdWord)
                 .clickButtonSearch()
                 .checkThatOpenedProductPageCorrespodToTheWordInSearch(firstWord)
                 .checkThatOpenedProductPageCorrespodToTheWordInSearch(secondWord);

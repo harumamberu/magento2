@@ -4,6 +4,7 @@ import com.headcovers.pages.admin.AdminLoginPage;
 import com.headcovers.pages.customer.SignInPage;
 import com.headcovers.pages.customer.categories.CategoryWarpPage;
 import com.headcovers.pages.customer.interfaces.Minicart;
+import com.headcovers.pages.customer.product.CartPage;
 import com.headcovers.pages.customer.product.ProductWarpPage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -13,6 +14,8 @@ public class WarpMainPage extends WarpPage implements Minicart{
     public WarpMainPage(WebDriver driver){
         super(driver);
     }
+
+    public By pageHeader = By.xpath("//header[@id='page-header']");
 
     //String headerId = "page-header";
     public By linkSignIn = By.xpath("//*[@id='page-header']//a[contains(text(), 'Sign in')]");
@@ -68,11 +71,20 @@ public class WarpMainPage extends WarpPage implements Minicart{
         return new ProductWarpPage(driver);
     }
 
-    public WarpMainPage fillSearchField1by1characters(String string){
+    public WarpMainPage fillSearchField1by1character(String string){
         driver.findElement(fieldSearch).sendKeys(string);
         click(fieldSearch);
         return this;
     }
+
+    public WarpMainPage fillSearchField1ByCharacter(String string){
+        for(int character = 0; character < string.length(); character++){
+            driver.findElement(fieldSearch).sendKeys(Character.toString(string.charAt(character)));
+        }
+        click(fieldSearch);
+        return this;
+    }
+
 
     public ProductWarpPage clickTheSmartsearchItem(int number){
         switch(number){
@@ -98,6 +110,11 @@ public class WarpMainPage extends WarpPage implements Minicart{
                 break;
         }
         return new ProductWarpPage(driver);
+    }
+
+    public CartPage clickButtonViewCartAndCheckout(){
+        click(buttonViewCartAndCheckout);
+        return new CartPage(driver);
     }
 
     public WarpMainPage open() {
